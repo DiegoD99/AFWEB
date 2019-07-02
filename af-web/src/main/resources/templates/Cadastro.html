@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Registro</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" >
+</head>
+<body>
+	<a href="../index" class="card btn btn-outline-warning">Voltar</a>
+	<form action="/bolsista/salvar" method="post">
+		
+		<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
+  			<span th:text="${mensagem}"></span>
+		</div>
+		
+		<div class="alert alert-warning" role="alert" th:if="${#fields.detailedErrors()}">
+			<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="${detailedError.message}"></span>
+			</div>
+		</div>	
+		
+		<div class="container">	
+		<div class="form-group" th:object="${bolsista}">
+			<label>Nome:</label>
+			<input class="form-control" type="text" name="nome" th:field="*{nome}"/>
+			<label>Matrícula:</label>
+			<input class="form-control" type="number" name="matricula" th:field="*{matricula}"/>
+			<label>Data de Nascimento:</label>
+			<input class="form-control" type="text" name="dataNasc" th:field="*{dataNasc}"/>
+			<label>Orientador:</label>
+			<select multiple class="form-control" name="orientador">
+				<option th:each="orientador:${orientadores}" th:value="${orientador.nome}" th:text="${orientador.nome}" th:field="*{orientador}"></option>
+			</select>
+		</div>
+		<button class="btn btn-outline-secondary">Enviar</button>
+		</div>
+	</form>
+</body>
+</html>
+
+
+
+
+<!--  <selectv class="form-control" name="orientador" th:each="orientador:${orientadores}">
+				<option value="${orientador.id}" th:text="${orientador}.nome"></option>
+			</select> -->

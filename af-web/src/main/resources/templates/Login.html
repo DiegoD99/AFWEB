@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Log-in</title>
+</head>
+<body>
+	<div class="container">
+		<form action="/index">
+			<div class="form-group">
+				<label>Matrícula:</label>
+				<input type="number" name="username" class="form-control"/>
+				<label>Senha:</label>
+				<input type="password" name="password" class="form-control"/>
+				<div class="mx-auto" style="width: 200px;">
+  					A senha é sua matrícula e nome.
+				</div>
+			</div>
+				<button type="submit" class="btn btn-outline-secondary">Entrar</button>
+		</form>
+	</div>
+</body>
+</html>
